@@ -1,11 +1,12 @@
 import React from 'react';
 import {SafeAreaView, Text, View} from 'react-native';
+import FocusedStatusBar from '../../components/FocusedStatusBar/FocusedStatusBar';
+import HomeHeaderBar from '../../components/HomeHeaderBar/HomeHeaderBar';
 const Home = () => {
   return (
     <SafeAreaView>
-      <View>
-        <Text>HOME</Text>
-      </View>
+      <FocusedStatusBar backgroundColor={'#1F293D'} />
+      <HomeHeaderBar />
     </SafeAreaView>
   );
 };
