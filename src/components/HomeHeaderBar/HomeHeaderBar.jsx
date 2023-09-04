@@ -1,17 +1,64 @@
 import React from 'react';
-import {Image, Text, View} from 'react-native';
+import {Button, Image, Text, TouchableOpacity, View} from 'react-native';
 import {StyleSheet} from 'react-native';
 import {assets} from '../../constants';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome6';
+import Ico from 'react-native-vector-icons/Entypo';
 
 const HomeHeaderBar = () => {
   return (
     <View style={styles.HomeHeaderBar}>
       <Image source={assets.logo} style={styles.logo} />
-      <View>
+      <View style={{flexDirection: 'row'}}>
         <View style={{alignItems: 'center', flexDirection: 'row'}}>
-          <Icon name="rocket" size={30} color="#900" />
-          <Text>Nur-Sultan</Text>
+          <Icon
+            name={'location-dot'}
+            size={24}
+            color="#637394"
+            style={{marginRight: 5}}
+          />
+          <Text
+            style={{
+              fontWeight: 700,
+              fontSize: 14,
+              lineHeight: 16.8,
+              color: '#FFFFFF',
+            }}>
+            Nur-Sultan
+          </Text>
+        </View>
+
+        <View
+          style={{alignItems: 'center', flexDirection: 'row', marginLeft: 30}}>
+          <Ico
+            name="language"
+            size={24}
+            color="#637394"
+            style={{marginRight: 5}}
+          />
+
+          <Text
+            style={{
+              fontWeight: 700,
+              fontSize: 14,
+              lineHeight: 16.8,
+              color: '#FFFFFF',
+            }}>
+            Eng
+          </Text>
+
+          <TouchableOpacity
+            style={{
+              backgroundColor: '#FF8036',
+              width: 70,
+              height: 40,
+              borderRadius: 8,
+              marginLeft: 20,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Text style={{color: '#FFFFFF', fontWeight: 'bold'}}>Log in</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
