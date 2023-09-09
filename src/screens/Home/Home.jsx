@@ -6,7 +6,10 @@ import HomeSearchBar from '../../components/HomeSearchBar/HomeSearchBar';
 import MovieCard from '../../components/Cards/MovieCard';
 import {FlatList} from 'react-native-gesture-handler';
 import {movieList} from '../../../data/movieList';
+import {useCinema} from '../../context/CinemaContext';
 const Home = () => {
+  const {nowPlaying} = useCinema();
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <FocusedStatusBar backgroundColor={'#1F293D'} />
