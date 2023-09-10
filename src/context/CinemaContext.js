@@ -12,9 +12,17 @@ export const CinemaProvider = ({children}) => {
   const [state, dispatch] = useReducer(cinemaReducer, initialState);
 
   useEffect(() => {
+    dispatch({type: 'START_LOADING'});
+
     const fetchData = async () => {
-      const nowPlayingData = await fetchNowPlaying();
-      dispatch({type: 'FETCH_NOW_PLAYING', payload: nowPlayingData});
+      try {
+        const nowPlayingData = await fetchNowPlaying();
+        dispatch({type: 'FETCH_NOW_PLAYING', payload: nowPlayingData});
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+
+      dispatch({type: 'END_LOADING'});
     };
 
     fetchData();
@@ -22,6 +30,7 @@ export const CinemaProvider = ({children}) => {
 
   const value = {
     nowPlaying: state.nowPlaying,
+    isLoading: state.isLoading,
   };
 
   return (

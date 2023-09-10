@@ -1,14 +1,18 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import FocusedStatusBar from '../../components/FocusedStatusBar/FocusedStatusBar';
 import HomeHeaderBar from '../../components/HomeHeaderBar/HomeHeaderBar';
 import HomeSearchBar from '../../components/HomeSearchBar/HomeSearchBar';
 import MovieCard from '../../components/Cards/MovieCard';
 import {FlatList} from 'react-native-gesture-handler';
 import {useCinema} from '../../context/CinemaContext';
+import Loader from '../../components/Loader/Loader';
 const Home = () => {
-  const {nowPlaying} = useCinema();
+  const {nowPlaying, isLoading} = useCinema();
 
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
     <SafeAreaView style={{flex: 1}}>
       <FocusedStatusBar backgroundColor={'#1F293D'} />
