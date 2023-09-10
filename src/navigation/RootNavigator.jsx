@@ -2,6 +2,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import Home from '../screens/Home/Home';
+import About from '../screens/About/About';
 
 const Stack = createStackNavigator();
 
@@ -12,6 +13,12 @@ const RootNavigator = () => {
         <Stack.Screen
           name="Home"
           component={Home}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="About"
+          component={About}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

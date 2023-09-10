@@ -4,11 +4,13 @@ import FocusedStatusBar from '../../components/FocusedStatusBar/FocusedStatusBar
 import HomeHeaderBar from '../../components/HomeHeaderBar/HomeHeaderBar';
 import HomeSearchBar from '../../components/HomeSearchBar/HomeSearchBar';
 import MovieCard from '../../components/Cards/MovieCard';
-import {FlatList} from 'react-native-gesture-handler';
+import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
 import {useCinema} from '../../context/CinemaContext';
 import Loader from '../../components/Loader/Loader';
+import {useNavigation} from '@react-navigation/native';
 const Home = () => {
   const {nowPlaying, isLoading} = useCinema();
+  const navigation = useNavigation();
 
   if (isLoading) {
     return <Loader />;
@@ -25,11 +27,16 @@ const Home = () => {
           keyExtractor={item => item?.id?.toString()}
           numColumns={2}
           renderItem={({item}) => (
-            <MovieCard
-              source={`https://image.tmdb.org/t/p/w500${item?.poster_path}`}
-              title={item?.title}
-              genres={item?.genres.join(', ')}
-            />
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('About', {movieId: item.id});
+              }}>
+              <MovieCard
+                source={`https://image.tmdb.org/t/p/w500${item?.poster_path}`}
+                title={item?.title}
+                genres={item?.genres.join(', ')}
+              />
+            </TouchableOpacity>
           )}
         />
       </View>
