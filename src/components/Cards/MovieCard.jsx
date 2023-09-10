@@ -4,7 +4,11 @@ import {Image, StyleSheet, View, Text} from 'react-native';
 const MovieCard = ({genres, title, source}) => {
   return (
     <View style={styles.movieCard}>
-      <Image source={source} style={styles.cardImage} resizeMode="cover" />
+      <Image
+        source={{uri: source}}
+        style={styles.cardImage}
+        resizeMode="cover"
+      />
 
       <Text style={styles.cardTitle}>{title}</Text>
       <Text style={styles.cardSubTitle}>{genres}</Text>

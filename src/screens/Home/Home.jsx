@@ -1,11 +1,10 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 import FocusedStatusBar from '../../components/FocusedStatusBar/FocusedStatusBar';
 import HomeHeaderBar from '../../components/HomeHeaderBar/HomeHeaderBar';
 import HomeSearchBar from '../../components/HomeSearchBar/HomeSearchBar';
 import MovieCard from '../../components/Cards/MovieCard';
 import {FlatList} from 'react-native-gesture-handler';
-import {movieList} from '../../../data/movieList';
 import {useCinema} from '../../context/CinemaContext';
 const Home = () => {
   const {nowPlaying} = useCinema();
@@ -18,14 +17,14 @@ const Home = () => {
         <HomeSearchBar />
 
         <FlatList
-          data={movieList}
-          keyExtractor={item => item.title}
+          data={nowPlaying}
+          keyExtractor={item => item?.id?.toString()}
           numColumns={2}
           renderItem={({item}) => (
             <MovieCard
-              source={item.image}
-              title={item.title}
-              genres={item.genres}
+              source={`https://image.tmdb.org/t/p/w500${item?.poster_path}`}
+              title={item?.title}
+              genres={item?.genres.join(', ')}
             />
           )}
         />

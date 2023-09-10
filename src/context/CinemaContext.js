@@ -12,14 +12,13 @@ export const CinemaProvider = ({children}) => {
   const [state, dispatch] = useReducer(cinemaReducer, initialState);
 
   useEffect(() => {
-    // Fetch now playing movies and dispatch the data
     const fetchData = async () => {
       const nowPlayingData = await fetchNowPlaying();
       dispatch({type: 'FETCH_NOW_PLAYING', payload: nowPlayingData});
     };
 
     fetchData();
-  }, []); // Run this effect only once when the component mounts
+  }, []);
 
   const value = {
     nowPlaying: state.nowPlaying,
