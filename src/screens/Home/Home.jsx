@@ -29,7 +29,7 @@ const Home = () => {
           renderItem={({item}) => (
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('About', {movieId: item.id});
+                navigation.navigate('AboutTab', {movieId: item.id});
               }}>
               <MovieCard
                 source={`https://image.tmdb.org/t/p/w500${item?.poster_path}`}

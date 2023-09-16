@@ -1,11 +1,15 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import LeftIcon from 'react-native-vector-icons/AntDesign';
+import {useNavigation} from '@react-navigation/native';
 
 const GoBackHeader = ({icon}) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.goBackContainer}>
-      <LeftIcon name="left" size={24} color="#637394" />
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <LeftIcon name="left" size={24} color="#637394" />
+      </TouchableOpacity>
 
       <View style={styles.titleContainer}>
         <Text style={styles.titleText}>The Batman</Text>
